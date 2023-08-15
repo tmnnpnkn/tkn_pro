@@ -20,7 +20,7 @@ include('connectdb.php');
 
             <div class="card shadow my-4">
                 <div class="card-header py-3 d-flex">
-                    <h6 class="m-2 font-weight-bold text-primary ">Manage_Product</h6>
+                    <h6 class="m-2 font-weight-bold text-primary ">Manage_</h6>
                     <a href="post.php"><button type="button" class="btn btn-primary ms-auto" name="addpost">Add Post</button></a>
                 </div>
                 <div class="card-body">
