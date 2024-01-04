@@ -2,7 +2,7 @@
 
 include("php/connectdb.php");
 // include("php/login.php");
-// include("headtotoe/header.php");
+
 
 
 session_start();
@@ -47,7 +47,74 @@ if (@$_SESSION['role'] != 'a') { //check session
         <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <link rel="stylesheet" href="css/count.css">
+        <!-- Add this just before </body> or in the <head> section -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
     </head>
+   <!-- Navbar -->
+ <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <!-- Container wrapper -->
+        <div class="container-fluid">
+            <!-- Toggle button -->
+            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+                data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Collapsible wrapper -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Navbar brand -->
+                <a class="navbar-brand mt-2 mt-lg-0" href="#">
+                    <span>P.E.N INTERTRADE</span>
+
+
+                </a>
+                <!-- Left links -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Team</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Projects</a>
+                    </li>
+                </ul>
+                <!-- Left links -->
+            </div>
+            <!-- Collapsible wrapper -->
+
+            <!-- Right elements -->
+            <div class="d-flex align-items-center">
+
+                <!-- Avatar -->
+                <div class="dropdown">
+                    <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#" id="navbarDropdownMenuAvatar"
+                        role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                        <img src="images/user.png" class="rounded-circle" height="25" alt="แอดมิน" loading="lazy" />
+                        &nbsp;
+                        <span>แอดมิน</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
+                        <li>
+                            <a class="dropdown-item" href="#">My profile</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">Settings</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Right elements -->
+        </div>
+        <!-- Container wrapper -->
+    </nav>
+    <!-- Navbar -->
 
     <body class="sb-nav-fixed">
         <div class="container-fluid">
@@ -61,90 +128,63 @@ if (@$_SESSION['role'] != 'a') { //check session
                         <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
                             id="menu">
                             <li class="nav-item">
-                                <a href="#" class="nav-link align-middle px-0">
-                                    <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
+                                <a href="adminpanel.php" class="nav-link align-middle px-0">
+                                    <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">หน้าหลัก</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                                <!-- <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
                                     <i class="fs-4 bi-speedometer2"></i> <span
-                                        class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
-                                <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
+                                        class="ms-1 d-none d-sm-inline">Dashboard</span> </a> -->
+                                <!-- <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                                     <li class="w-100">
                                         <a href="php/register.php" class="nav-link px-0"> <span
-                                                class="d-none d-sm-inline text-white">User
-                                                Management</span> </a>
+                                                class="d-none d-sm-inline text-white">Manage User
+                                            </span> </a>
                                     </li>
                                     <li>
-                                        <a href="php/post_manage.php" class="nav-link px-0"> <span
-                                                class="d-none d-sm-inline text-white">Post</span></a>
+                                        <a href="php/formAddProduct.php" class="nav-link px-0"> <span
+                                                class="d-none d-sm-inline text-white">Manage Product</span></a>
                                     </li>
-                                </ul>
+                                </ul> -->
                             </li>
-                            <li>
-                                <a href="#" class="nav-link px-0 align-middle">
-                                    <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Orders</span></a>
-                            </li>
-                            <li>
-                                <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
-                                    <i class="fs-4 bi-bootstrap"></i> <span
-                                        class="ms-1 d-none d-sm-inline">Bootstrap</span></a>
-                                <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
-                                    <li class="w-100">
-                                        <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span>
-                                            1</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span>
-                                            2</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                                    <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Products</span> </a>
-                                <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
-                                    <li class="w-100">
-                                        <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span>
-                                            1</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span>
-                                            2</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span>
-                                            3</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span>
-                                            4</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#" class="nav-link px-0 align-middle">
-                                    <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Customers</span>
+                            <li class="nav-item">
+                                <a href="php/register.php" class="nav-link align-middle px-0">
+                                    <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">จัดการผู้ใช้</span>
                                 </a>
                             </li>
+
+                            <li>
+                                <a href="#submenu4" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                                    <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">จัดการสินค้า</span>
+                                </a>
+                                <ul class="collapse nav flex-column ms-1" id="submenu4" data-bs-parent="#menu">
+                                    <li class="w-100">
+                                        <a href="php/formAddProduct.php" class="nav-link px-0"> <span
+                                                class="d-none d-sm-inline text-white">เพิ่มสินค้าใหม่
+                                            </span></a>
+                                    </li>
+                                    <li>
+                                        <a href="php/AddnumProduct.php" class="nav-link px-0"> <span
+                                                class="d-none d-sm-inline text-white">เพิ่มสินค้าในคลัง
+                                            </span></a>
+                                    </li>
+                                    <!-- Add more product links here if needed -->
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="#" class="nav-link px-0 align-middle">
+                                    <i class="fs-4 bi-table">
+                                        <a href="php/order.php" class="nav-link px-0">
+                                    </i> <span class="ms-1 d-none d-sm-inline">Orders</span></a>
+                            </li>
+                            
+                            
+                           
                         </ul>
                         <hr>
-                        <div class="dropdown pb-4">
-                            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
-                                id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="images/profile.jpg" alt="hugenerd" width="30" height="30" class="rounded-circle">
-                                <span class="d-none d-sm-inline mx-1">admin</span>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                                <li><a class="dropdown-item" href="#">New project...</a></li>
-                                <li><a class="dropdown-item" href="#">Settings</a></li>
-                                <li><a class="dropdown-item" href="#">Profile</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="php/logout.php">Sign out</a></li>
-                            </ul>
-                        </div>
+                       
                     </div>
                 </div>
 
@@ -153,7 +193,7 @@ if (@$_SESSION['role'] != 'a') { //check session
                     <div id="layoutSidenav_content">
                         <main>
                             <div class="container-fluid">
-                                <h1 class="mt-4">Dashboard</h1>
+                                <h1 class="mt-4">หน้าหลัก</h1>
                                 <ol class="breadcrumb mb-4">
                                     <li class="breadcrumb-item active">Dashboard</li>
                                 </ol>
@@ -208,10 +248,15 @@ if (@$_SESSION['role'] != 'a') { //check session
                                 $sql4 = "select * from prakad";
                                 $query4 = mysqli_query($conn, $sql4);
                                 $total_notice = mysqli_num_rows($query4);
+
+                                $sql5 = "select * from product";
+                                $query5 = mysqli_query($conn, $sql5);
+                                $total_product = mysqli_num_rows($query5);
+
                                 ?>
                                 <div class="container">
                                     <div class="row">
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
                                             <a href="php/register.php">
                                                 <div class="card-counter info">
                                                     <i class="fa fa-users"></i>
@@ -222,25 +267,36 @@ if (@$_SESSION['role'] != 'a') { //check session
                                                 </div>
                                             </a>
                                         </div>
-                                        <div class="col-md-4">
-                                        <a href="php/post_manage.php">
-                                            <div class="card-counter primary">
-                                                <i class="fa fa-newspaper-o"></i>
-                                                <span class="count-numbers">
-                                                    <?php echo $total_news; ?>
-                                                </span>
-                                                <span class="count-name">News</span>
-                                            </div>
+                                        <div class="col-md-3">
+                                            <a href="php/post_manage.php">
+                                                <div class="card-counter primary">
+                                                    <i class="fa fa-newspaper-o"></i>
+                                                    <span class="count-numbers">
+                                                        <?php echo $total_news; ?>
+                                                    </span>
+                                                    <span class="count-name">รายการออเดอร์</span>
+                                                </div>
                                         </div>
-                                        <div class="col-md-4">
-                                        <a href="php/notice_manage.php">
-                                            <div class="card-counter danger">
-                                                <i class="fa fa-ticket"></i>
-                                                <span class="count-numbers">
-                                                    <?php echo $total_notice; ?>
-                                                </span>
-                                                <span class="count-name">Notice</span>
-                                            </div>
+                                        <div class="col-md-3">
+                                            <a href="php/product.php">
+                                                <div class="card-counter danger">
+                                                    <i class="fa fa-ticket"></i>
+                                                    <span class="count-numbers">
+                                                        <?php echo $total_product; ?>
+                                                    </span>
+                                                    <span class="count-name">รายการสินค้า</span>
+                                                </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <a href="php/register.php">
+                                                <div class="card-counter success">
+                                                    <i class="fa fa-money"></i>
+                                                    <span class="count-numbers">
+                                                        <?php echo $total_user; ?>
+                                                    </span>
+                                                    <span class="count-name">ยอดขาย</span>
+                                                </div>
+                                            </a>
                                         </div>
 
 
@@ -286,14 +342,14 @@ if (@$_SESSION['role'] != 'a') { //check session
                                                     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
                                                 </head>
 
-                                                <body>
-                                                    <!-- <canvas id="myChart"></canvas> -->
+                                                <!-- <body>
+                                                    <!-- <canvas id="myChart"></canvas> --/>
                                                     <canvas id="myChart" width="562" height="562"
                                                         style="display: block; box-sizing: border-box; height: 450px; width: 450px;"></canvas>
 
                                                     <script>
                                                         // Retrieve the JSON data
-                                                        var jsonData = <?php echo $jsonData; ?>;
+                                                        var jsonData = <\?php echo $jsonData; ?>;
                                                         // Extract the id and view_count values from the JSON
                                                         var ids = jsonData.map(function (item) {
                                                             return item.id;
@@ -346,7 +402,7 @@ if (@$_SESSION['role'] != 'a') { //check session
                                                             }
                                                         });
                                                     </script>
-                                                </body>
+                                                </body> -->
 
                                                 </html>
                                             </div>
@@ -368,7 +424,7 @@ if (@$_SESSION['role'] != 'a') { //check session
                                 </div>
                                 <div class="card mb-6">
                                     <div class="card-header">
-                                        <i class="fas fa-table me-1"></i>
+                                        <i class="fa fa-table me-1"></i>
                                         DataTable Example
                                     </div>
                                     <div class="card-body">

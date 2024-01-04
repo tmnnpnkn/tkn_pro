@@ -1,108 +1,152 @@
-<!-- Template 2098 Health http://www.tooplate.com/view/2098-health -->
-<?php
-include('php/connectdb.php');
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-$sql = "SELECT * FROM articles ORDER BY view_count DESC LIMIT 5";
-$result = mysqli_query($conn, $sql);
+     <!-- chart js -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.js"></script>
 
-// Create an empty array to store the results
-$data = array();
+    <title>Dashboard Designed Using Bootstrap5 & Chart JS  by devbanban.com</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col col-sm-12">
+          <div class="alert alert-primary" role="alert">
+            <h4> Dashboard Template using Bootstrap5 & Chart JS</h4>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 col-sm-3">
+          <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+            <div class="card-header">
+              <ion-icon name="people-outline"></ion-icon>
+            รายการสมาชิก 
+          </div>
+            <div class="card-body">
+              <h5 class="card-title">จำนวน 5,000 คน</h5>
+              <p class="card-text">
+                <a href="https://devbanban.com/?p=4425" class="text-white" style="text-decoration: none;"> more detail...</a>
+              </p>
+            </div>
+          </div>
+        </div>
 
-// Fetch the results and add them to the data array
-if (mysqli_num_rows($result) > 0) {
-     while ($row = mysqli_fetch_assoc($result)) {
-          $data[] = array(
-               'id' => $row['a_id'],
-               'title' => $row['title'],
-               'View Count' => $row['view_count']
-          );
-     }
-}
+       <div class="col-6 col-sm-3">
+          <div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
+            <div class="card-header">
+              <ion-icon name="cart-outline"></ion-icon>
+            รายการออเดอร์
+          </div>
+            <div class="card-body">
+              <h5 class="card-title">จำนวน 900,000 ออเดอร์</h5>
+              <p class="card-text">
+                <a href="https://devbanban.com/?p=2867" class="text-white" style="text-decoration: none;"> more detail...</a>
+              </p>
+            </div>
+          </div>
+        </div>
 
-// Convert the data array to JSON
-$jsonData = json_encode($data);
+       
+       <div class="col-6 col-sm-3">
+          <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+            <div class="card-header">
+              <ion-icon name="desktop-outline"></ion-icon>
+            รายการสินค้า 
+          </div>
+            <div class="card-body">
+              <h5 class="card-title">จำนวน 9,999 รายการ</h5>
+              <p class="card-text">
+                <a href="https://devbanban.com/?p=4425" class="text-white" style="text-decoration: none;"> more detail...</a>
+              </p>
+            </div>
+          </div>
+        </div>
 
-// Output the JSON data
-// echo $jsonData;
+        <div class="col-6 col-sm-3">
+          <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+            <div class="card-header">
+              <ion-icon name="cash-outline"></ion-icon>
+            ยอดขาย
+          </div>
+            <div class="card-body">
+              <h5 class="card-title"> 11,500,000  บาท</h5>
+              <p class="card-text">
+                <a href="https://devbanban.com/?p=2867" class="text-white" style="text-decoration: none;"> more detail...</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div> <!-- //row -->
 
-?>
+      <div class="row">
+      <div class="col-sm-12">
 
-<!-- <script>
-    var jsonData = <?php echo $jsonData; ?>;
-    console.log(jsonData);
-</script> -->
+        <canvas id="myChart" height="100px"></canvas>
+              <script>
+              var ctx = document.getElementById("myChart").getContext('2d');
+              var myChart = new Chart(ctx, {
+              type: 'bar',
+              data: {
+              labels: ['2022', '2021', '2020', '2019'  ],
+              datasets: [{
+              label: 'รายงานภาพรวม แยกตามปี (บาท)',
+              data: ['1000000','2500000','5000000', '3000000'],
+              backgroundColor: [
+              'rgba(255, 99, 132, 0.2)',
+              'rgba(54, 162, 235, 0.2)',
+              'rgba(255, 206, 86, 0.2)',
+              'rgba(75, 192, 192, 0.2)',
+              'rgba(153, 102, 255, 0.2)',
+              'rgba(255, 159, 64, 0.2)'
+              ],
+              borderColor: [
+              'rgba(255,99,132,1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 206, 86, 1)',
+              'rgba(75, 192, 192, 1)',
+              'rgba(153, 102, 255, 1)',
+              'rgba(255, 159, 64, 1)'
+              ],
+              borderWidth: 1
+              }]
+              },
+              options: {
+              scales: {
+              yAxes: [{
+              ticks: {
+              beginAtZero:true
+              }
+              }]
+              }
+              }
+              });
+              </script>
+        
+      </div>
+       </div> <!-- //row -->
+    </div> <!-- //container -->
 
-<!DOCTYPE html>
-<html>
+    <footer style="margin-top: 100px">
+      <center> desiged by <a href="https://devbanban.com/"> devbanban.com </a> 2022</center>
+    </footer>
+    
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <!-- ionicon -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <!--
+    ionicon docs เข้าไปอ่านกันหน่อย
+    *Usage : https://ionic.io/ionicons/usage
+    *All icon : https://ionic.io/ionicons
+    -->
 
-<head>
-     <title>Pie Chart Example</title>
-     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-
-<body>
-     <!-- <canvas id="myChart"></canvas> -->
-     <canvas id="myChart" width="100%" height="40" style="display: block; box-sizing: border-box; height: 40px; width: 100%;"></canvas>
-
-     <script>
-          // Retrieve the JSON data
-          var jsonData = <?php echo $jsonData; ?>;
-
-          // Extract the id and view_count values from the JSON
-          var ids = jsonData.map(function (item) {
-               return item.id;
-          });
-
-          var titles = jsonData.map(function (item) {
-               return item.title;
-          });
-
-          var viewCounts = jsonData.map(function (item) {
-               return item['View Count'];
-          });
-
-          // Create the pie chart using Chart.js
-          var ctx = document.getElementById('myChart').getContext('2d');
-          var myChart = new Chart(ctx, {
-               type: 'pie',
-               data: {
-                    labels: titles,
-                    datasets: [{
-                         label: 'View Count',
-                         data: viewCounts,
-                         backgroundColor: [
-                              'rgba(255, 99, 132, 0.5)',
-                              'rgba(54, 162, 235, 0.5)',
-                              'rgba(255, 206, 86, 0.5)',
-                              'rgba(75, 192, 192, 0.5)',
-                              'rgba(153, 102, 255, 0.5)',
-                              'rgba(255, 159, 64, 0.5)',
-                              'rgba(255, 99, 132, 0.5)'
-                         ],
-                         borderColor: [
-                              'rgba(255, 99, 132, 1)',
-                              'rgba(54, 162, 235, 1)',
-                              'rgba(255, 206, 86, 1)',
-                              'rgba(75, 192, 192, 1)',
-                              'rgba(153, 102, 255, 1)',
-                              'rgba(255, 159, 64, 1)',
-                              'rgba(255, 99, 132, 1)'
-                         ],
-                         borderWidth: 1
-                    }]
-               },
-               options: {
-                    responsive: true,
-                    plugins: {
-                         legend: {
-                              labels: {
-                                   fontSize: 12 // Adjust the font size for the labels
-                              }
-                         }
-                    }
-               }
-          });
-     </script>
-</body>
-
+   
+  </body>
 </html>
