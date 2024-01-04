@@ -1,7 +1,6 @@
 <?php
 include('connectdb.php');
 include('../headtotoe/header.php');
-include('../headtotoe/headee.php');
 
 ?>
 
@@ -26,7 +25,7 @@ include('../headtotoe/headee.php');
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">เพิ่มผู้ใช้งาน</h5>
+                <h5 class="modal-title" id="exampleModalLabel">เพิ่ม</h5>
                 <a href="register.php"><button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button></a>
@@ -47,11 +46,11 @@ include('../headtotoe/headee.php');
                         <input type="text" name="username" class="form-control" placeholder="Enter Username">
                     </div>
                     <div class="form-group">
-                        <label>เบอร์โทร</label>
-                        <input type="text" name="tel" class="form-control" placeholder="Enter Tel">
-
+                        <label>Email</label>
+                        <input type="email" name="email" class="form-control checking_email" placeholder="Enter Email">
+                        <small class="error_email" style="color: red;"></small>
                     </div>
-                    <div class="form-group ">
+                    <div class="form-group">
                         <label>Password</label>
                         <input type="password" name="password" class="form-control" placeholder="Enter Password">
                     </div>
@@ -59,16 +58,6 @@ include('../headtotoe/headee.php');
                         <label>Confirm Password</label>
                         <input type="password" name="confirmpassword" class="form-control"
                             placeholder="Confirm Password">
-                    </div>
-                    <div class="from-group">
-                        <label for="">สถานะ</label>
-                        <select name="role" class="form-control">
-                            <option value="">--เลือกสถานะ--</option>
-                            <option value="a">แอดมิน</option>
-                            <option value="m">พนักงานขาย</option>
-                            <option value="n">พนักงานคลัง</option>
-                        </select>
-
                     </div>
 
 
@@ -93,7 +82,7 @@ include('../headtotoe/headee.php');
 
     <div class="card shadow my-4">
         <div class="card-header py-3 d-flex">
-            <h6 class="m-2 font-weight-bold text-primary ">จัดการผู้ใช้</h6>
+            <h3 class="m-2 font-weight-bold text-primary ">ใบเสนอราคา</h3>
             <?php
             ini_set('display_errors', 1);
             error_reporting(~0);
@@ -108,8 +97,8 @@ include('../headtotoe/headee.php');
                 <input type="submit" value="Search">
 
             </form>
-            <button type="button" class="btn btn-primary ms-auto" data-bs-toggle="modal"
-                data-bs-target="#exampleModal">เพิ่มผู้ใช้งาน</button>
+            <button type="button" class="btn btn-success ms-auto" data-bs-toggle="modal"
+                data-bs-target="#exampleModal">เพิ่ม +</button>
 
         </div>
         <div class="card-body">
@@ -120,22 +109,21 @@ include('../headtotoe/headee.php');
 
                 $query = "SELECT * FROM user WHERE Name LIKE '%" . $strKeyword . "%'  limit {$start},{$perpage}";
                 $query_run = mysqli_query($conn, $query);
-                $totalUsers = mysqli_num_rows($query_run);
+                // $totalorder = mysqli_num_rows($query_run);
                 // echo "Total users: " . $totalUsers . "<br><br>";
                 ?>
                 <table class="table" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th> ID </th>
-                            <th> ชื่อ </th>
-                            <th> นามสกุล </th>
-                            <th> ชื่อผู้ใช้ </th>
-                            <th> เบอร์โทร </th>
-                            <th> รหัสผ่าน</th>
-                            <th> บทบาท</th>
-                            <th> สถานะ</th>
-                            <th>EDIT</th>
-                            <!-- <th>DELETE</th> -->
+                            <th> วันที่ </th>
+                            <th> เลขที่เอกสาร </th>
+                            <th> รหัสลูกค้า </th>
+                            <th> ชื่อลูกค้า </th>
+                            <th> จำนวนเงินทั้งสิ้น </th>
+                            <th> สถานะ </th>
+                            <th>ผู้รับผิดชอบ</th>
+                            <!-- <th>EDIT</th>
+                            <th>DELETE</th> -->
                         </tr>
                     </thead>
                     <tbody>
@@ -144,57 +132,40 @@ include('../headtotoe/headee.php');
                             while ($row = mysqli_fetch_assoc($query_run)) {
                                 ?>
                                 <tr>
-                                    <td>
-                                        <?php echo $row['id']; ?>
+                                    <!-- <td>
+                                        </?php echo $row['time']; ?>
                                     </td>
                                     <td>
-                                        <?php echo $row['Name']; ?>
+                                        </?php echo $row['id_cus']; ?>
                                     </td>
                                     <td>
-                                        <?php echo $row['Lastname']; ?>
+                                        </?php echo $row['cus_name']; ?>
                                     </td>
                                     <td>
-                                        <?php echo $row['Username']; ?>
+                                        </?php echo $row['price']; ?>
                                     </td>
                                     <td>
-                                        <?php echo $row['Tel']; ?>
+                                        </?php echo $row['status']; ?>
+                                    </td> -->
+                                    <!-- <td>
+                                        </?php echo $row['Password']; ?>
                                     </td>
                                     <td>
-                                        <?php echo $row['Password']; ?>
-                                    </td>
-                                    <td>
-                                        <!-- <ฃ?php echo $row['Role']; ?> -->
-                                        <?php
-                                        $roleValue = $row['Role'];
-
-                                        if ($roleValue === 'a') {
-                                            echo 'แอดมิน';
-                                        } elseif ($roleValue === 'm') {
-                                            echo 'พนักงานขาย';
-                                        }elseif ($roleValue === 'n') {
-                                            echo 'พนักงานคลัง';
-                                        }
-                                         else {
-                                            // Handle other cases or display a default value if needed
-                                            echo 'Unknown Role';
-                                        }
-                                        ?>
-                                    </td>
-                                    <td>
-                                    </td>
-                                    <td>
+                                        </?php echo $row['Role']; ?>
+                                    </td> -->
+                                    <!-- <td>
                                         <form action="user_edit.php" method="post">
                                             <input type="hidden" name="edit_id" value="<?php echo $row['id']; ?>">
-                                            <button type="submit" name="edit_btn" class="fa fa-pencil-square-o"></button>
+                                            <button type="submit" name="edit_btn" class="btn btn-warning"> EDIT</button>
                                         </form>
                                     </td>
                                     <td>
-                                        <!-- <form action="code.php" method="post">
-                                            <input type="hidden" name="delete_id" value="<\?php echo $row['id']; ?>">
+                                        <form action="code.php" method="post">
+                                            <input type="hidden" name="delete_id" value="<?php echo $row['id']; ?>">
                                             <button type="submit" name="delete_btn" class="btn btn-danger">
                                                 DELETE</button>
-                                        </form> -->
-                                    </td>
+                                        </form>
+                                    </td> -->
                                 </tr>
 
                                 <?php
@@ -224,9 +195,7 @@ include('../headtotoe/headee.php');
                             </a>
                         </li>
                         <?php for ($i = 1; $i <= $total_page; $i++) { ?>
-                            <li><a href="register.php?page=<?php echo $i; ?>">
-                                    <?php echo $i; ?>
-                                </a></li>
+                            <li><a href="register.php?page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
                         <?php } ?>
                         <li>
                             <a href="register.php?page=<?php echo $total_page; ?>" aria-label="Next">
